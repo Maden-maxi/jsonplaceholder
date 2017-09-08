@@ -1,0 +1,9 @@
+.bool-dialog, .bool-dialog-actions{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.bool-dialog {
+  flex-direction: column;
+}

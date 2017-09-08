@@ -1,0 +1,19 @@
+.author-dialog-title{
+  display: flex;
+  align-items: center;
+}
+.author-ID{
+  margin-left: 3px;
+}
+.post-dialog-actions{
+  position: relative;
+  z-index: 1;
+}
+.post-dialog-close{
+  position: absolute;
+  right: 0;
+}
+.author-card{
+  box-shadow: none;
+  background-color: transparent;
+}

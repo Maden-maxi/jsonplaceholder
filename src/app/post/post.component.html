@@ -1,0 +1,40 @@
+<md-toolbar color="warn">
+  <button md-raised-button color="accent" (click)="back()"><md-icon>arrow_back</md-icon>Back to posts</button>
+  <div class="separator"></div>
+  <ng-template #spinner>
+    <md-spinner></md-spinner>
+  </ng-template>
+</md-toolbar>
+
+<ng-container *ngIf="post; else spinner">
+  <md-card class="post animation-Scale">
+    <md-card-header>
+      <md-card-title><h2><md-icon>description</md-icon> {{post.title}}</h2></md-card-title>
+    </md-card-header>
+    <md-card-content>
+      <p class="mat-h3">{{post.body}}</p>
+      <md-chip-list>
+        <md-chip color="primary" selected="true">{{post.id}}</md-chip>
+      </md-chip-list>
+    </md-card-content>
+  </md-card>
+
+  <h2>Comments</h2>
+  <ng-container>
+    <md-card class="comment animation-FadeInDown" *ngFor="let comment of post.comments">
+      <md-card-header>
+        <div md-card-avatar><md-icon>account_circle</md-icon></div>
+        <md-card-title>{{comment.name}}</md-card-title>
+      </md-card-header>
+      <md-card-content>
+        <p>{{comment.body}}</p>
+        <md-chip-list>
+          <md-chip color="accent" selected="true">{{comment.email}}</md-chip>
+          <md-chip>{{comment.id}}</md-chip>
+        </md-chip-list>
+      </md-card-content>
+    </md-card>
+  </ng-container>
+</ng-container>
+
+

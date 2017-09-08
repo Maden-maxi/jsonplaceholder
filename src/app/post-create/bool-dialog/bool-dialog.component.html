@@ -1,0 +1,11 @@
+<md-dialog-content class="bool-dialog">
+  <div>
+    <h4>You have made changes.</h4>
+    <p>If you leave this page, the data you entered will be lost.</p>
+    <p><em>Are you sure you want to leave this page?</em></p>
+  </div>
+</md-dialog-content>
+<md-dialog-actions class="bool-dialog-actions">
+  <button md-raised-button (click)="dialogRef.close(true)" color="primary"><md-icon>check</md-icon> Yes</button>
+  <button md-raised-button (click)="dialogRef.close(false)" color="warn"><md-icon>close</md-icon> No</button>
+</md-dialog-actions>

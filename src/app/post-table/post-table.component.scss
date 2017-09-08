@@ -1,0 +1,12 @@
+.column-id{
+  max-width: 50px;
+}
+.column-title{
+  flex: 4;
+}
+.mat-row:nth-child(2n) {
+  background-color: cornflowerblue;
+  .mat-cell{
+    color: #fff;
+  }
+}

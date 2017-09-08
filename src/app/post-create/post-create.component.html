@@ -1,0 +1,16 @@
+<form class="jsonp-form" name="post" #createPost="ngForm" (ngSubmit)="submit(createPost)">
+  <input type="hidden" name="userId" value="1" [(ngModel)]="post.userId">
+  <md-form-field class="jsonp-full-width">
+    <input mdInput  placeholder="Title" name="title" [(ngModel)]="post.title" #title="ngModel" minlength="5" [required]="true">
+    <md-hint align="end" *ngIf="title.invalid && title.touched">min length letters 5</md-hint>
+  </md-form-field>
+  <md-form-field class="jsonp-full-width">
+    <textarea mdInput placeholder="Body" name="body" [(ngModel)]="post.body" #body="ngModel" minlength="10" [required]="true"></textarea>
+    <md-hint align="end" *ngIf="body.invalid && body.touched">min length letters 10</md-hint>
+  </md-form-field>
+  <div>
+    <button [disabled]="createPost.invalid" md-raised-button color="primary"><md-icon>save</md-icon> Save</button>
+    <button type="button" md-raised-button color="accent" (click)="cancel(createPost)"><md-icon>cancel</md-icon> Cancel</button>
+  </div>
+  <md-spinner *ngIf="loading"></md-spinner>
+</form>

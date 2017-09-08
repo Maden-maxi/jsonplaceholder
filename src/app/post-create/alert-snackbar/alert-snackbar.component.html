@@ -1,0 +1,8 @@
+<div class="snackbar-wrapper">
+  <button type="button" md-button>
+    <md-icon>info</md-icon>
+    <span i18n="@@SnackBarAlert">Created Post with id {{data.id}}</span>
+  </button>
+  <button md-button (click)="snackBarRef.dismiss()" i18n-mdTooltip="@@Close" mdTooltipPosition="above" mdTooltip="Close"><md-icon>close</md-icon></button>
+</div>
+
