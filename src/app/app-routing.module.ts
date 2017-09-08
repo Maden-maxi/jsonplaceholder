@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {Routes, RouterModule, ExtraOptions} from '@angular/router';
 import { PostTableComponent } from './post-table/post-table.component';
 import { PostComponent } from './post/post.component';
 import { PostCreateComponent } from './post-create/post-create.component';
@@ -41,8 +41,12 @@ const routes: Routes = [
   }
 ];
 
+const config: ExtraOptions = {
+  useHash: true
+};
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, config)],
   exports: [RouterModule],
   providers: [
     PostResolverService,

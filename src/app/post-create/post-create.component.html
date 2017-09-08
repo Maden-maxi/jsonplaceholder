@@ -10,7 +10,7 @@
   </md-form-field>
   <div>
     <button [disabled]="createPost.invalid" md-raised-button color="primary"><md-icon>save</md-icon> Save</button>
-    <button type="button" md-raised-button color="accent" (click)="cancel(createPost)"><md-icon>cancel</md-icon> Cancel</button>
+    <button type="button" md-raised-button color="accent" (click)="cancel()"><md-icon>cancel</md-icon> Cancel</button>
   </div>
   <md-spinner *ngIf="loading"></md-spinner>
 </form>
