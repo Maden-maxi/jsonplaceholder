@@ -6,8 +6,7 @@ import { Observable } from 'rxjs/Observable';
 export class JsonPlaceholderInterceptorService implements  HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log(req);
-    const apiRoot = 'http://jsonplaceholder.typicode.com/';
+    const apiRoot = 'https://jsonplaceholder.typicode.com/';
     const jsonpReq = req.clone({
       url: apiRoot + req.url
     });

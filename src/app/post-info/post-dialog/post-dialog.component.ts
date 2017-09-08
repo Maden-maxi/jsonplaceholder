@@ -11,9 +11,7 @@ export class PostDialogComponent implements OnInit {
   constructor(
     public dialogRef: MdDialogRef<PostDialogComponent>,
     @Inject(MD_DIALOG_DATA) public data: any
-  ) {
-    console.log(data);
-  }
+  ) { }
 
   ngOnInit() {
 

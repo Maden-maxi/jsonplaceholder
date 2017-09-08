@@ -19,14 +19,13 @@ export class PostComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscriber = this.route.data.subscribe((data) => {
       this.dataSubscriber = data.post.subscribe(res => {
-        console.log(res);
         this.title.setTitle(res.title);
         this.post = res;
       });
     } );
   }
   back(): void {
-    window.history.back();
+    this.router.navigate(['/']);
   }
   ngOnDestroy() {
     this.subscriber.unsubscribe();
