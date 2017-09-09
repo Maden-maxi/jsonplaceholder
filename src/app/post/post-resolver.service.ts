@@ -2,10 +2,7 @@ import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot} from '@angular/router';
 import {JsonPlaceholderService} from '../core/json-placeholder.service';
 import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/merge';
-import 'rxjs/add/observable/zip';
 import 'rxjs/add/operator/combineLatest';
 
 
@@ -36,10 +33,10 @@ export class PostResolverService implements Resolve<any> {
         return null;
       }
     });
-    const data = postData.combineLatest(postComments, (post, comments) => {
+    const postEntiry = postData.combineLatest(postComments, (post, comments) => {
       post.comments = comments;
       return post;
     });
-    return data;
+    return postEntiry;
   }
 }
