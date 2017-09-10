@@ -25,7 +25,10 @@
         <md-header-cell class="column-title" *mdHeaderCellDef>
           <button md-button>Title</button>
         </md-header-cell>
-        <md-cell class="column-title" *mdCellDef="let element"><a [routerLink]="['post', element.id]" md-button>{{element.title}}</a></md-cell>
+        <md-cell class="column-title" *mdCellDef="let element">
+          <a [routerLink]="['post', element.id, {userId: element.userId, mydata: 'data'}]" md-button>{{element.title}}</a>
+          <!--<button (click)="goToPost(element.id, element.userId)"  md-button>{{element.title}}</button>-->
+        </md-cell>
       </ng-container>
 
       <!-- Weight Column -->

@@ -6,7 +6,7 @@ import { PostCreateComponent } from './post-create/post-create.component';
 import {PostResolverService} from './post/post-resolver.service';
 import {PostInfoComponent} from './post-info/post-info.component';
 import {PostInfoResolverService} from './post-info/post-info-resolver.service';
-import {CanDeactivateGuard} from "./can-deactivate.guard";
+import {CanDeactivateGuard} from './can-deactivate.guard';
 
 const routes: Routes = [
   {

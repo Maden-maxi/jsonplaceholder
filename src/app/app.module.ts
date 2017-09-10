@@ -14,6 +14,7 @@ import { PostInfoComponent } from './post-info/post-info.component';
 import { PostDialogComponent } from './post-info/post-dialog/post-dialog.component';
 import { AlertSnackbarComponent } from './post-create/alert-snackbar/alert-snackbar.component';
 import { BoolDialogComponent } from './post-create/bool-dialog/bool-dialog.component';
+import {Location} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { BoolDialogComponent } from './post-create/bool-dialog/bool-dialog.compo
       provide: HTTP_INTERCEPTORS,
       useClass: JsonPlaceholderInterceptorService,
       multi: true
-    }
+    },
+    Location
   ],
   bootstrap: [AppComponent]
 })

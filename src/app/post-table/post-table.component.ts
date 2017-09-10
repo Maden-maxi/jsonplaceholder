@@ -10,6 +10,7 @@ import { JsonPlaceholderService } from '../core/json-placeholder.service';
 import { JsonPlaceholderPost } from '../core/models/json-placeholder-post';
 import {PostDialogComponent} from '../post-info/post-dialog/post-dialog.component';
 import {Title} from "@angular/platform-browser";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-post-table',
@@ -22,6 +23,7 @@ export class PostTableComponent implements OnInit, OnDestroy {
   dataSource;
   @ViewChild(MdPaginator) paginator: MdPaginator;
   constructor(
+    private router: Router,
     public jsonP: JsonPlaceholderService,
     private dialog: MdDialog,
     private title: Title
@@ -57,6 +59,9 @@ export class PostTableComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     this.posts.unsubscribe();
+  }
+  goToPost(id, userId) {
+    this.router.navigate(['post', id, {userId}]);
   }
 }
 
