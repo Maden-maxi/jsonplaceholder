@@ -6,54 +6,55 @@
 <md-card>
 
   <md-card-content>
+      <md-table #table [dataSource]="dataSource">
 
-    <md-table #table [dataSource]="dataSource">
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
 
-      <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
+        <!-- Position Column -->
+        <ng-container mdColumnDef="ID">
+          <md-header-cell class="column-id" *mdHeaderCellDef>
+            ID
+          </md-header-cell>
+          <md-cell class="column-id" *mdCellDef="let element"> {{element.id}} </md-cell>
+        </ng-container>
 
-      <!-- Position Column -->
-      <ng-container mdColumnDef="ID">
-        <md-header-cell class="column-id" *mdHeaderCellDef>
-          ID
-        </md-header-cell>
-        <md-cell class="column-id" *mdCellDef="let element"> {{element.id}} </md-cell>
-      </ng-container>
+        <!-- Name Column -->
+        <ng-container mdColumnDef="Title">
+          <md-header-cell class="column-title" *mdHeaderCellDef>
+            <button md-button>Title</button>
+          </md-header-cell>
+          <md-cell class="column-title" *mdCellDef="let element">
+            <a [routerLink]="['post', element.id, {userId: element.userId, mydata: 'data'}]" md-button>{{element.title}}</a>
+            <!--<button (click)="goToPost(element.id, element.userId)"  md-button>{{element.title}}</button>-->
+          </md-cell>
+        </ng-container>
 
-      <!-- Name Column -->
-      <ng-container mdColumnDef="Title">
-        <md-header-cell class="column-title" *mdHeaderCellDef>
-          <button md-button>Title</button>
-        </md-header-cell>
-        <md-cell class="column-title" *mdCellDef="let element">
-          <a [routerLink]="['post', element.id, {userId: element.userId, mydata: 'data'}]" md-button>{{element.title}}</a>
-          <!--<button (click)="goToPost(element.id, element.userId)"  md-button>{{element.title}}</button>-->
-        </md-cell>
-      </ng-container>
+        <!-- Weight Column -->
+        <ng-container mdColumnDef="Comments">
+          <md-header-cell *mdHeaderCellDef><button md-button>Comments</button></md-header-cell>
+          <md-cell *mdCellDef="let element"><button (click)="openDialog(element.id, 'comments')" md-button>Comments</button></md-cell>
+        </ng-container>
 
-      <!-- Weight Column -->
-      <ng-container mdColumnDef="Comments">
-        <md-header-cell *mdHeaderCellDef><button md-button>Comments</button></md-header-cell>
-        <md-cell *mdCellDef="let element"><button (click)="openDialog(element.id, 'comments')" md-button>Comments</button></md-cell>
-      </ng-container>
+        <!-- Color Column -->
+        <ng-container mdColumnDef="Author">
+          <md-header-cell *mdHeaderCellDef>
+            <button md-button>Author</button>
+          </md-header-cell>
+          <md-cell *mdCellDef="let element"><button (click)="openDialog(element.userId, 'author')" md-button>Author [{{element.userId}}]</button></md-cell>
+        </ng-container>
 
-      <!-- Color Column -->
-      <ng-container mdColumnDef="Author">
-        <md-header-cell *mdHeaderCellDef>
-          <button md-button>Author</button>
-        </md-header-cell>
-        <md-cell *mdCellDef="let element"><button (click)="openDialog(element.userId, 'author')" md-button>Author [{{element.userId}}]</button></md-cell>
-      </ng-container>
+        <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
+        <md-row *mdRowDef="let row; columns: displayedColumns;"></md-row>
 
-      <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
-      <md-row *mdRowDef="let row; columns: displayedColumns;"></md-row>
+      </md-table>
+      <md-paginator #paginator
+                    [length]="jsonP.data.length"
+                    [pageIndex]="0"
+                    [pageSize]="10"
+                    [pageSizeOptions]="[5, 10, 25, 100]"></md-paginator>
 
-    </md-table>
-    <md-paginator #paginator
-                  [length]="jsonP.data.length"
-                  [pageIndex]="0"
-                  [pageSize]="10"
-                  [pageSizeOptions]="[5, 10, 25, 100]"></md-paginator>
+
 
   </md-card-content>
 
